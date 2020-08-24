@@ -140,5 +140,6 @@ cython_debug/
 .vscode
 .DS_Store
 # project related
-data
-train
+data/*
+train/*
+
