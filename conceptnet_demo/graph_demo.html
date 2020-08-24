@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .link {
+        fill: none;
+        stroke: #666;
+        stroke-width: 1.5px;
+    }
+
+    #licensing {
+        fill: green;
+    }
+
+    .link.licensing {
+        stroke: green;
+    }
+
+    .link.resolved {
+        stroke-dasharray: 0, 2 1;
+    }
+
+    circle {
+        fill: #ccc;
+        stroke: #333;
+        stroke-width: 1.5px;
+    }
+
+    text {
+        font: 12px Microsoft YaHei;
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+    }
+
+    .linetext {
+        font-size: 12px Microsoft YaHei;
+    }
+</style>
+
+<body>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script>
+        var links =
+            [
+                {
+                    "source": "/c/en/excavator",
+                    "target": "/c/en/dig_hole",
+                    "rela": "/r/CapableOf",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/dragline_excavator",
+                    "target": "/c/en/excavator/n",
+                    "rela": "/r/DerivedFrom",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator",
+                    "target": "/c/en/excavate",
+                    "rela": "/r/DerivedFrom",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/spoon_excavator",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/DerivedFrom",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/excavateur",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/EtymologicallyRelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator",
+                    "target": "http://en.wiktionary.org/wiki/excavator",
+                    "rela": "/r/ExternalURL",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator",
+                    "target": "http://fr.wiktionary.org/wiki/excavator",
+                    "rela": "/r/ExternalURL",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n/wn/person",
+                    "target": "http://wordnet-rdf.princeton.edu/wn31/109640322-n",
+                    "rela": "/r/ExternalURL",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavators",
+                    "target": "http://en.wiktionary.org/wiki/excavators",
+                    "rela": "/r/ExternalURL",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavators",
+                    "target": "http://fr.wiktionary.org/wiki/excavators",
+                    "rela": "/r/ExternalURL",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavators",
+                    "target": "/c/en/excavator/n",
+                    "rela": "/r/FormOf",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavators/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/FormOf",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/crawler_excavator",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/crawler_excavator",
+                    "target": "/c/en/excavator/n",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/dragline",
+                    "target": "/c/en/excavator/n",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/dragline_excavator/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n/wn/person",
+                    "target": "/c/en/workman/n/wn/person",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator_shovel",
+                    "target": "/c/en/excavator/n",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator_shovel/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/IsA",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ar/زحافة/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/crh/ekskavator/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cs/bagr/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cs/bagrista/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cs/bagrovat/v",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cs/exkavátor/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cy/jac_codi_baw/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/de/abbaggerung/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/de/bagger/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/el/εκσκαφέασ/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/backhoe/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/bucketwheel/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/cavity/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/digger/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/discoid/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/dragline_excavator/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/dredging/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavate/v/wikt/en_1",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavation/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/backhoe",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/curette",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/dig",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/digger",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/ditch",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/excavate",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/excavation",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/pathological",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/track",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/en/vehicle",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/fr/excavateur",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/mul/excavata",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavators/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/french_navvy/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/mini_digger/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/mole/n/wikt/en_2",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/shovelbum/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/enm/delvere/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/es/excavador/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/es/excavadora/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fi/kaivinkone/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fi/kaivukone/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fi/kaivuri/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/excavateur/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/excavatrice/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/he/מחפר/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/is/grafa/n/wikt/en_2",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/escavatore/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/escavatorista/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/ruspa/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/scavatore/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/scavatrice/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/sterratore/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/talpa/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/ショベル/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/掘削機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ko/굴착기/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/mk/багер/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/nl/baggermachine/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/no/gravemaskin/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/pl/koparka/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/pt/excavador/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/pt/excavadora/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ru/экскаватор/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sh/bager/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sl/bagrist/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sv/grävare/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sv/grävmaskin/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sv/grävskopa/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sv/hjulgrävare/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/sv/skopa/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/th/เครื่องขุด/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/怪手/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/拓塗機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖土機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖掘機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/掘土機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/鏟土機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/RelatedTo",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/cs/bagr/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/da/gravko/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/de/bagger/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/backhoe/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/bg/копач",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ca/excavador",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/el/εκσκαφεασ",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/es/excavador",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/fi/kaivaja",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/gl/excavador",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/it/badilante",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/it/scavatore",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/it/spalatore",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/it/sterratore",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ka/ექსკავატორი",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ko/굴착기",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ky/экскаватор",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/pt/cavador",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/pt/excavador",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ru/землекоп",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ru/экскаваторщик",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/sv/grävare",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/sv/grävmaskin",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/th/เครื่องขุด",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/tr/ekskavatör",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/uk/екскаватор",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/ur/کھدايی",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/uz/ekskavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/vi/người_xới_đất",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/zh/挖掘机",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n",
+                    "target": "/c/zh/挖掘機",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator/n/wn/artifact",
+                    "target": "/c/en/power_shovel/n/wn/artifact",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/eu/zulatzaile/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fa/کاوشگر/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fi/kaivaja/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/excavateur/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/excavatrice/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/pelleteuse/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/fr/pelleteuse/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/escavatore/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/it/escavatorista/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/シャベル_カー/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/シャベルカー/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/ショベル_カー/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/ショベルカー/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/掘削機/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ja/油圧ショベル/n",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/ms/penggali/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/th/คนขุด/n/wn/person",
+                    "target": "/c/en/excavator/n/wn/person",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/怪手",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖土机",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖土機",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖掘机",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖掘机械",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖掘機",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/挖掘機械",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/掘土机",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/zh/掘土機",
+                    "target": "/c/en/excavator",
+                    "rela": "/r/Synonym",
+                    "type": "resolved"
+                },
+                {
+                    "source": "/c/en/excavator",
+                    "target": "/c/en/making_excavation",
+                    "rela": "/r/UsedFor",
+                    "type": "resolved"
+                }
+            ];
+        var nodes = {};
+        links.forEach(function (link) {
+            link.source = nodes[link.source] || (nodes[link.source] = { name: link.source });
+            link.target = nodes[link.target] || (nodes[link.target] = { name: link.target });
+        });
+
+        var width = 1920, height = 1080;
+
+        var force = d3.layout.force()
+            .nodes(d3.values(nodes))
+            .links(links)
+            .size([width, height])
+            .linkDistance(180)
+            .charge(-1500)
+            .on("tick", tick)
+            .start();
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        var marker =
+            svg.append("marker")
+                .attr("id", "resolved")
+                .attr("markerUnits", "userSpaceOnUse")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 32)
+                .attr("refY", -1)
+                .attr("markerWidth", 12)
+                .attr("markerHeight", 12)
+                .attr("orient", "auto")
+                .attr("stroke-width", 2)
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr('fill', '#000000');
+
+        var edges_line = svg.selectAll(".edgepath")
+            .data(force.links())
+            .enter()
+            .append("path")
+            .attr({
+                'd': function (d) { return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y },
+                'class': 'edgepath',
+                'id': function (d, i) { return 'edgepath' + i; }
+            })
+            .style("stroke", function (d) {
+                var lineColor;
+                lineColor = "#B43232";
+                return lineColor;
+            })
+            .style("pointer-events", "none")
+            .style("stroke-width", 0.5)
+            .attr("marker-end", "url(#resolved)");
+
+        var edges_text = svg.append("g").selectAll(".edgelabel")
+            .data(force.links())
+            .enter()
+            .append("text")
+            .style("pointer-events", "none")
+            .attr({
+                'class': 'edgelabel',
+                'id': function (d, i) { return 'edgepath' + i; },
+                'dx': 80,
+                'dy': 0
+            });
+
+        edges_text.append('textPath')
+            .attr('xlink:href', function (d, i) { return '#edgepath' + i })
+            .style("pointer-events", "none")
+            .text(function (d) { return d.rela; });
+
+        var circle = svg.append("g").selectAll("circle")
+            .data(force.nodes())
+            .enter().append("circle")
+            .style("fill", function (node) {
+                var color;
+                var link = links[node.index];
+                color = "#F9EBF9";
+                return color;
+            })
+            .style('stroke', function (node) {
+                var color;
+                var link = links[node.index];
+                color = "#A254A2";
+                return color;
+            })
+            .attr("r", 28)
+            .on("click", function (node) {
+                edges_line.style("stroke-width", function (line) {
+                    console.log(line);
+                    if (line.source.name == node.name || line.target.name == node.name) {
+                        return 4;
+                    } else {
+                        return 0.5;
+                    }
+                });
+            })
+            .call(force.drag);
+
+        var text = svg.append("g").selectAll("text")
+            .data(force.nodes())
+            .enter()
+            .append("text")
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .style('fill', function (node) {
+                var color;
+                var link = links[node.index];
+                color = "#A254A2";
+                return color;
+            }).attr('x', function (d) {
+                var re_en = /[a-zA-Z]+/g;
+                if (d.name.match(re_en)) {
+                    d3.select(this).append('tspan')
+                        .attr('x', 0)
+                        .attr('y', 2)
+                        .text(function () { return d.name; });
+                }
+
+                else if (d.name.length <= 4) {
+                    d3.select(this).append('tspan')
+                        .attr('x', 0)
+                        .attr('y', 2)
+                        .text(function () { return d.name; });
+                } else {
+                    var top = d.name.substring(0, 4);
+                    var bot = d.name.substring(4, d.name.length);
+
+                    d3.select(this).text(function () { return ''; });
+
+                    d3.select(this).append('tspan')
+                        .attr('x', 0)
+                        .attr('y', -7)
+                        .text(function () { return top; });
+
+                    d3.select(this).append('tspan')
+                        .attr('x', 0)
+                        .attr('y', 10)
+                        .text(function () { return bot; });
+                }
+            });
+
+        function tick() {
+            circle.attr("transform", transform1);
+            text.attr("transform", transform2);
+
+            edges_line.attr('d', function (d) {
+                var path = 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
+                return path;
+            });
+
+            edges_text.attr('transform', function (d, i) {
+                if (d.target.x < d.source.x) {
+                    bbox = this.getBBox();
+                    rx = bbox.x + bbox.width / 2;
+                    ry = bbox.y + bbox.height / 2;
+                    return 'rotate(180 ' + rx + ' ' + ry + ')';
+                }
+                else {
+                    return 'rotate(0)';
+                }
+            });
+        }
+
+        function linkArc(d) {
+            return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y
+        }
+
+        function transform1(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        }
+        function transform2(d) {
+            return "translate(" + (d.x) + "," + d.y + ")";
+        }
+
+
+    </script>

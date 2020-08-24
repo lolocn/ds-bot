@@ -1,0 +1,421 @@
+{
+  "threaded_extended": {},
+  "messages": [
+    {
+      "id": 784837211054080,
+      "sender_id": 1592551024,
+      "replied_to_id": 784815870836736,
+      "created_at": "2020/07/26 08:09:03 +0000",
+      "network_id": 256,
+      "message_type": "update",
+      "sender_type": "user",
+      "url": "https://www.yammer.com/api/v1/messages/784837211054080",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/messages/784837211054080",
+      "group_id": 15674749,
+      "body": {
+        "parsed": "One team one dream",
+        "plain": "One team one dream",
+        "rich": "One team one dream"
+      },
+      "thread_id": 784815870836736,
+      "client_type": "iPhone",
+      "client_url": "https://about.yammer.com/product/mobile/ios/",
+      "system_message": false,
+      "direct_message": false,
+      "chat_client_sequence": null,
+      "language": "en",
+      "notified_user_ids": [],
+      "privacy": "public",
+      "attachments": [],
+      "liked_by": {
+        "count": 0,
+        "names": []
+      },
+      "content_excerpt": "One team one dream",
+      "group_created_id": 15674749
+    },
+    {
+      "id": 784815870836736,
+      "sender_id": 324618149888,
+      "replied_to_id": null,
+      "created_at": "2020/07/26 07:47:51 +0000",
+      "network_id": 256,
+      "message_type": "update",
+      "sender_type": "user",
+      "url": "https://www.yammer.com/api/v1/messages/784815870836736",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/messages/784815870836736",
+      "group_id": 15674749,
+      "body": {
+        "parsed": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field [[tag:45822271488]] [[tag:45822279680]] [[tag:45822263296]] [[tag:31865390]]",
+        "plain": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field #owenrawlinson #adameley #scottconnors #osway",
+        "rich": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field <span class='yammer-object' data-yammer-object='tag:45822271488' data-resource-id='45822271488' data-resource-model='tag'>#<a href='https://www.yammer.com/bhpbilliton.com/topics/53269749760'>owenrawlinson</a></span> <span class='yammer-object' data-yammer-object='tag:45822279680' data-resource-id='45822279680' data-resource-model='tag'>#<a href='https://www.yammer.com/bhpbilliton.com/topics/53269757952'>adameley</a></span> <span class='yammer-object' data-yammer-object='tag:45822263296' data-resource-id='45822263296' data-resource-model='tag'>#<a href='https://www.yammer.com/bhpbilliton.com/topics/53269741568'>scottconnors</a></span> <span class='yammer-object' data-yammer-object='tag:31865390' data-resource-id='31865390' data-resource-model='tag'>#<a href='https://www.yammer.com/bhpbilliton.com/topics/38402262'>osway</a></span>"
+      },
+      "thread_id": 784815870836736,
+      "client_type": "iPad",
+      "client_url": "https://about.yammer.com/product/mobile/ios/",
+      "system_message": false,
+      "direct_message": false,
+      "chat_client_sequence": null,
+      "language": "en",
+      "notified_user_ids": [],
+      "privacy": "public",
+      "attachments": [
+        {
+          "id": 692550836224,
+          "network_id": 256,
+          "url": "https://www.yammer.com/api/v1/uploaded_files/692550836224",
+          "web_url": "https://www.yammer.com/bhpbilliton.com/uploaded_files/692550836224",
+          "type": "image",
+          "name": "IMG_0069.HEIC",
+          "original_name": "IMG_0069.HEIC",
+          "full_name": "IMG_0069",
+          "description": "",
+          "content_type": "image/jpeg",
+          "content_class": "Image",
+          "created_at": "2020/07/26 07:38:59 +0000",
+          "owner_id": 324618149888,
+          "official": false,
+          "storage_type": "AZURE",
+          "target_type": "GROUP",
+          "storage_state": null,
+          "sharepoint_id": null,
+          "sharepoint_web_url": null,
+          "small_icon_url": "https://s0-azure.assets-yammer.com/assets/images/file_icons/types/default_blue_39x50_icon.png",
+          "large_icon_url": "https://s0-azure.assets-yammer.com/assets/images/file_icons/types/default_blue_79x102_icon.png",
+          "download_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/download",
+          "thumbnail_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/version/704420413440/thumbnail",
+          "preview_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/preview/",
+          "large_preview_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/version/704420413440/large_preview/",
+          "size": 1266651,
+          "owner_type": "user",
+          "last_uploaded_at": "2020/07/26 07:39:07 +0000",
+          "last_uploaded_by_id": 324618149888,
+          "last_uploaded_by_type": "user",
+          "uuid": null,
+          "transcoded": null,
+          "streaming_url": null,
+          "path": "256/692550836224/IMG_0069.HEIC",
+          "y_id": 692550836224,
+          "overlay_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/version/704420413440/preview/",
+          "privacy": "public",
+          "group_id": 15674749,
+          "height": 1536,
+          "width": 2048,
+          "scaled_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/version/704420413440/scaled/{{width}}x{{height}}",
+          "image": {
+            "url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/preview/",
+            "size": 1266651,
+            "thumbnail_url": "https://www.yammer.com/api/v1/uploaded_files/692550836224/version/704420413440/thumbnail"
+          },
+          "latest_version_id": 704420413440,
+          "status": "not_ams",
+          "real_type": "uploaded_file"
+        }
+      ],
+      "liked_by": {
+        "count": 1,
+        "names": [
+          {
+            "full_name": "Rawlinson, Owen",
+            "permalink": "owenrawlinson",
+            "user_id": 1592551024,
+            "network_id": 256
+          }
+        ]
+      },
+      "content_excerpt": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field #owenrawlinson #adameley #scottconnors #osway",
+      "group_created_id": 15674749
+    }
+  ],
+  "references": [
+    {
+      "type": "tag",
+      "id": 45822279680,
+      "network_id": 256,
+      "name": "adameley",
+      "url": "https://www.yammer.com/api/v1/tags/45822279680",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269757952"
+    },
+    {
+      "type": "tag",
+      "id": 45822263296,
+      "network_id": 256,
+      "name": "scottconnors",
+      "url": "https://www.yammer.com/api/v1/tags/45822263296",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269741568"
+    },
+    {
+      "type": "tag",
+      "id": 45822271488,
+      "network_id": 256,
+      "name": "owenrawlinson",
+      "url": "https://www.yammer.com/api/v1/tags/45822271488",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269749760"
+    },
+    {
+      "type": "tag",
+      "id": 45822214144,
+      "network_id": 256,
+      "name": "owen",
+      "url": "https://www.yammer.com/api/v1/tags/45822214144",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269676032"
+    },
+    {
+      "type": "tag",
+      "id": 45822230528,
+      "network_id": 256,
+      "name": "scott",
+      "url": "https://www.yammer.com/api/v1/tags/45822230528",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269692416"
+    },
+    {
+      "type": "tag",
+      "id": 45822222336,
+      "network_id": 256,
+      "name": "adam",
+      "url": "https://www.yammer.com/api/v1/tags/45822222336",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269684224"
+    },
+    {
+      "type": "tag",
+      "id": 31865390,
+      "network_id": 256,
+      "name": "osway",
+      "url": "https://www.yammer.com/api/v1/tags/31865390",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/38402262"
+    },
+    {
+      "type": "user",
+      "id": 324618149888,
+      "name": "ronaldbain",
+      "state": "active",
+      "full_name": "Bain, Ronald Stephen",
+      "job_title": "Supervisor Maintenance",
+      "network_id": 256,
+      "mugshot_url": "https://mug0.assets-yammer.com/mugshot/images/48x48/HSmCSxTHCqZWG0QPqZcWkZkBj-4TQkBG_4d697cc3",
+      "mugshot_url_template": "https://mug0.assets-yammer.com/mugshot/images/{width}x{height}/HSmCSxTHCqZWG0QPqZcWkZkBj-4TQkBG_4d697cc3",
+      "url": "https://www.yammer.com/api/v1/users/324618149888",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/users/324618149888",
+      "activated_at": "2019/10/29 06:43:00 +0000",
+      "auto_activated": false,
+      "stats": {
+        "following": 2,
+        "followers": 2,
+        "updates": 0
+      },
+      "email": "ronald.bain@bhp.com"
+    },
+    {
+      "type": "user",
+      "id": 1592551024,
+      "name": "owenrawlinson",
+      "state": "active",
+      "full_name": "Rawlinson, Owen",
+      "job_title": "Superintendent Maintenance",
+      "network_id": 256,
+      "mugshot_url": "https://mug0.assets-yammer.com/mugshot/images/48x48/0q0sQlXTJ67kXQ4GBkz7Pf3MRNp6LTVH_9bfda281",
+      "mugshot_url_template": "https://mug0.assets-yammer.com/mugshot/images/{width}x{height}/0q0sQlXTJ67kXQ4GBkz7Pf3MRNp6LTVH_9bfda281",
+      "url": "https://www.yammer.com/api/v1/users/1592551024",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/users/1592551024",
+      "activated_at": "2018/05/15 21:41:47 +0000",
+      "auto_activated": true,
+      "stats": {
+        "following": 15,
+        "followers": 10,
+        "updates": 0
+      },
+      "email": "owen.rawlinson@bhp.com"
+    },
+    {
+      "type": "message",
+      "url": "https://www.yammer.com/api/v1/messages/784815870836736",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/messages/784815870836736",
+      "id": 784815870836736,
+      "sender_id": 324618149888,
+      "replied_to_id": null,
+      "created_at": "2020/07/26 07:47:51 +0000",
+      "network_id": 256,
+      "group_id": 15674749,
+      "sender_type": "user",
+      "thread_id": 784815870836736,
+      "message_type": "update",
+      "system_message": false,
+      "content_excerpt": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field #owenrawlinson #adameley #scottconnors #osway",
+      "language": "en",
+      "privacy": "public",
+      "direct_message": false,
+      "body": {
+        "plain": "OS pulleys/rollers working together in the field to achieve quality field leaderships and also Completing mastery TTT verifications whilst out in the field #owenrawlinson #adameley #scottconnors #osway"
+      }
+    },
+    {
+      "url": "https://www.yammer.com/api/v1/messages/in_thread/784815870836736",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/threads/784815870836736",
+      "type": "thread",
+      "id": 784815870836736,
+      "network_id": 256,
+      "thread_starter_id": 784815870836736,
+      "group_id": 15674749,
+      "topics": [
+        {
+          "id": 38402262,
+          "type": "topic"
+        },
+        {
+          "id": 53269757952,
+          "type": "topic"
+        },
+        {
+          "id": 53269749760,
+          "type": "topic"
+        },
+        {
+          "id": 53269741568,
+          "type": "topic"
+        },
+        {
+          "id": 53269692416,
+          "type": "topic"
+        },
+        {
+          "id": 53269684224,
+          "type": "topic"
+        },
+        {
+          "id": 53269676032,
+          "type": "topic"
+        }
+      ],
+      "privacy": "public",
+      "announcement": false,
+      "direct_message": false,
+      "has_attachments": true,
+      "reply_disabled": false,
+      "stats": {
+        "first_reply_id": 784837211054080,
+        "first_reply_at": "2020/07/26 08:09:03 +0000",
+        "latest_reply_id": 784837211054080,
+        "latest_reply_at": "2020/07/26 08:09:03 +0000",
+        "updates": 2,
+        "shares": 0
+      },
+      "invited_user_ids": [],
+      "read_only": false
+    },
+    {
+      "type": "group",
+      "id": 15674749,
+      "email": "operationsservices+bhpbilliton.com@yammer.com",
+      "full_name": "Operations Services",
+      "network_id": 256,
+      "name": "operationsservices",
+      "description": "Got something to share or a question? Be a part of our community ... Authenticity, Connectedness, Mastery and Performance drives us.",
+      "privacy": "public",
+      "url": "https://www.yammer.com/api/v1/groups/15674749",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/#/threads/inGroup?type=in_group&feedId=15674749",
+      "mugshot_url": "https://mug0.assets-yammer.com/mugshot/images/48x48/Lv23KHNGXxDCVM5k207wjg2M3xzM5-Mt",
+      "mugshot_url_template": "https://mug0.assets-yammer.com/mugshot/images/{width}x{height}/Lv23KHNGXxDCVM5k207wjg2M3xzM5-Mt",
+      "mugshot_id": "Lv23KHNGXxDCVM5k207wjg2M3xzM5-Mt",
+      "show_in_directory": "true",
+      "created_at": "2018/08/16 07:18:46 +0000",
+      "members": 1540,
+      "aad_guests": 0,
+      "color": "#1952A1",
+      "external": false,
+      "moderated": false,
+      "header_image_url": "https://mug0.assets-yammer.com/mugshot/images/group-header-coffee.png",
+      "category": "unclassified",
+      "default_thread_starter_type": "normal",
+      "restricted_posting": false,
+      "company_group": false
+    },
+    {
+      "type": "topic",
+      "id": 38402262,
+      "network_id": 256,
+      "name": "Osway",
+      "normalized_name": "osway",
+      "permalink": "osway",
+      "url": "https://www.yammer.com/api/v1/topics/38402262",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/38402262"
+    },
+    {
+      "type": "topic",
+      "id": 53269757952,
+      "network_id": 256,
+      "name": "Adameley",
+      "normalized_name": "adameley",
+      "permalink": "adameley",
+      "url": "https://www.yammer.com/api/v1/topics/53269757952",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269757952"
+    },
+    {
+      "type": "topic",
+      "id": 53269749760,
+      "network_id": 256,
+      "name": "Owenrawlinson",
+      "normalized_name": "owenrawlinson",
+      "permalink": "owenrawlinson",
+      "url": "https://www.yammer.com/api/v1/topics/53269749760",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269749760"
+    },
+    {
+      "type": "topic",
+      "id": 53269741568,
+      "network_id": 256,
+      "name": "Scottconnors",
+      "normalized_name": "scottconnors",
+      "permalink": "scottconnors",
+      "url": "https://www.yammer.com/api/v1/topics/53269741568",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269741568"
+    },
+    {
+      "type": "topic",
+      "id": 53269692416,
+      "network_id": 256,
+      "name": "Scott",
+      "normalized_name": "scott",
+      "permalink": "scott",
+      "url": "https://www.yammer.com/api/v1/topics/53269692416",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269692416"
+    },
+    {
+      "type": "topic",
+      "id": 53269684224,
+      "network_id": 256,
+      "name": "Adam",
+      "normalized_name": "adam",
+      "permalink": "adam",
+      "url": "https://www.yammer.com/api/v1/topics/53269684224",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269684224"
+    },
+    {
+      "type": "topic",
+      "id": 53269676032,
+      "network_id": 256,
+      "name": "Owen",
+      "normalized_name": "owen",
+      "permalink": "owen",
+      "url": "https://www.yammer.com/api/v1/topics/53269676032",
+      "web_url": "https://www.yammer.com/bhpbilliton.com/topics/53269676032"
+    }
+  ],
+  "external_references": [],
+  "meta": {
+    "older_available": true,
+    "requested_poll_interval": 60,
+    "realtime": {
+      "uri": "https://1-256-1610633501-744.rt.yammer.com/cometd/",
+      "authentication_token": "Lj3iiir/9yC1PsxWxeGnfBYgExq1ZSj8Q0QmwJG7ZL94nKtWKi1OLVKyMjQzNDAzNjY1MNRRykstKc8vylayMjI101FKrSjILKoEqjC1tDAxNjaxMKkFAJiSDt0=",
+      "channel_id": "MToyNTY6MjU2"
+    },
+    "last_seen_message_id": null,
+    "current_user_id": 1610633501,
+    "followed_references": [],
+    "ymodules": [],
+    "newest_message_details": null,
+    "feed_name": "Company Feed",
+    "feed_desc": "BHP's public messages",
+    "direct_from_body": false
+  }
+}
