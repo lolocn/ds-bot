@@ -2,7 +2,7 @@
 ## digitalsuite-bot 
 
 ### 主要目录结构
-- chatbot_app 目录包含用ChatterBot实现的web版会话机器人外壳，安装依赖 `pip install -r requirements.txt`，执行 `python app.py` 可运行
+- chatbot_app 目录包含用ChatterBot实现的web版会话机器人外壳，安装依赖 `pip install -r requirements.txt`，执行 `python app.py` 可运行, 运行在 `http://localhost:5000`
 - conceptnet_demo 目录包含抽取conceptnet的方法和绘制图谱用于展示的html文件（使用d3.js）
 - corpus 目录包含从yammer抓取原始语料的样例（使用yampy SDK），以及从原始语料中整理出对话
 - data 目录用于程序读取训练相关的语料和数据，数据体积比较大，需要另外下载所有数据文件并解压拷贝到此目录，下载链接见数据链接小节
