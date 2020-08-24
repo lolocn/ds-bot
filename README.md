@@ -1,5 +1,5 @@
-# ds-bot 融合了知识图谱的会话机器人
-## digitalsuite-bot 
+# 融合了知识库的矿场会话机器人
+## digitalsuite-bot 闲聊会话机器人模块
 
 ### 主要目录结构
 - chatbot_app 目录包含用ChatterBot实现的web版会话机器人外壳，安装依赖 `pip install -r requirements.txt`，执行 `python app.py` 可运行, 运行在 `http://localhost:5000`
