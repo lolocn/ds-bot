@@ -32,10 +32,12 @@ logging.basicConfig(level=logging.INFO)
 # trainer = UbuntuCorpusTrainer(ubuntu_bot)
 # trainer.train()
 
+# 根目录返回会话前端UI
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# 加载模型
 tf.app.flags.DEFINE_integer("symbols", 30000, "vocabulary size.")
 tf.app.flags.DEFINE_integer("embed_units", 300, "Size of word embedding.")
 tf.app.flags.DEFINE_integer("trans_units", 100, "Size of trans embedding.")
@@ -61,11 +63,13 @@ model = Model(
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.Session(config=config) as sess:
+    # 加载最新的训练好的模型
     model_path = tf.train.latest_checkpoint(FLAGS.train_dir)
     print('restore from %s' % model_path)
     model.saver.restore(sess, model_path)
     saver = model.saver
 
+    # API请求 获取回复
     @app.route("/get")
     def get_bot_response():
         userText = request.args.get('msg')
