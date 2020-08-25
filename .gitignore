@@ -138,7 +138,7 @@ dmypy.json
 cython_debug/
 
 .vscode
-.DS_Store
+*/.DS_Store
 # project related
 data/*
 train/*
