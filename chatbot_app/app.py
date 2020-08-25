@@ -4,6 +4,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 import logging
 import tensorflow as tf
 import sys 
+import spacy
 sys.path.append("..") 
 from model import Model, _START_VOCAB
 # from chatterbot.trainers import UbuntuCorpusTrainer
@@ -11,6 +12,9 @@ from model import Model, _START_VOCAB
 app = Flask(__name__)
 
 logging.basicConfig(level=logging.INFO)
+
+# 初始化spaCy nlp
+nlp = spacy.load('en_core_web_sm')
 
 # english_bot = ChatBot("Chatterbot", 
 #     storage_adapter="chatterbot.storage.MongoDatabaseAdapter",
