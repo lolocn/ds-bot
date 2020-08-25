@@ -41,7 +41,7 @@ csk_triples, csk_entities, kb_dict = [], [], []
 def prepare_data(path, is_train=True):
     global csk_entities, csk_triples, kb_dict
     # 从 resource.json文件中读取所有三元组和词汇
-    with open('%s/resource.json' % path) as f:
+    with open('%s/resource.txt' % path) as f:
         d = json.loads(f.readline())
 
     csk_triples = d['csk_triples']
