@@ -34,31 +34,24 @@ __all__ = ["dynamic_rnn_decoder"]
 def dynamic_rnn_decoder(cell, decoder_fn, inputs=None, sequence_length=None,
                                                 parallel_iterations=None, swap_memory=False,
                                                 time_major=False, scope=None, name=None):
-    """ Dynamic RNN decoder for a sequence-to-sequence model specified by
-    RNNCell and decoder function.
+    """ 动态 RNN 解码器， 用于指定使用RNNCell的sequence-to-sequence模型的解码器功能
 
-    The `dynamic_rnn_decoder` is similar to the `tf.python.ops.rnn.dynamic_rnn`
-    as the decoder does not make any assumptions of sequence length and batch
-    size of the input.
+    `dynamic_rnn_decoder` 和官方提供的 `tf.python.ops.rnn.dynamic_rnn`差不多，
+    但是不限制输入的sequence和batch size
 
-    The `dynamic_rnn_decoder` has two modes: training or inference and expects
-    the user to create seperate functions for each.
+    `dynamic_rnn_decoder` 有两个方法 : training 和 inference， 这两个是分开的方法
 
-    Under both training and inference, both `cell` and `decoder_fn` are expected,
-    where `cell` performs computation at every timestep using `raw_rnn`, and
-    `decoder_fn` allows modeling of early stopping, output, state, and next
-    input and context.
+    不管是training 还是 inference, `cell` 和 `decoder_fn` 都是需要的,
+    `cell` 用于每一步使用`raw_rnn`的计算，
+    `decoder_fn` 可以控制模型的early stopping, output, state, 还有下一个input 和 context.
 
-    When training the user is expected to supply `inputs`. At every time step a
-    slice of the supplied input is fed to the `decoder_fn`, which modifies and
-    returns the input for the next time step.
+    训练时需要提供 `inputs`. 在每一个时间步，每一步的输入会被喂进 `decoder_fn`, 做一些更新和返回
+    下一个时间步的输入
 
-    `sequence_length` is needed at training time, i.e., when `inputs` is not
-    None, for dynamic unrolling. At test time, when `inputs` is None,
-    `sequence_length` is not needed.
+    为了做RNN的动态展开训练的时候`sequence_length` 是必需的, `input`也不能为None
+    测试时, 如果 `inputs` 是 None,`sequence_length` 不是必需的
 
-    Under inference `inputs` is expected to be `None` and the input is inferred
-    solely from the `decoder_fn`.
+    在inference时`inputs`应为 `None`，并且来自`decoder_fn`的输出
 
     Args:
         cell: An instance of RNNCell.
@@ -131,14 +124,14 @@ def dynamic_rnn_decoder(cell, decoder_fn, inputs=None, sequence_length=None,
                                             [cell, decoder_fn, inputs, sequence_length,
                                              parallel_iterations, swap_memory, time_major, scope]):
         if inputs is not None:
-            # Convert to tensor
+            # 转成 tensor
             inputs = ops.convert_to_tensor(inputs)
 
-            # Test input dimensions
+            # 检查 input 维度
             if inputs.get_shape().ndims is not None and (
                     inputs.get_shape().ndims < 2):
                 raise ValueError("Inputs must have at least two dimensions")
-            # Setup of RNN (dimensions, sizes, length, initial state, dtype)
+            # 设置RNN (dimensions, sizes, length, initial state, dtype)
             if not time_major:
                 # [batch, seq, features] -> [seq, batch, features]
                 inputs = array_ops.transpose(inputs, perm=[1, 0, 2])

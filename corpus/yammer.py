@@ -13,7 +13,7 @@ import json
 使用python2
 yampy在python3下运行有问题
 '''
-yammer = yampy.Yammer(access_token='256-xuFOTPDvsQI0s0JqehOLSw')
+yammer = yampy.Yammer(access_token='{access token of yammer}')
 # limit调节一次获取的消息条数
 messages = yammer.messages.all(limit=20)
 json = json.dumps(messages)

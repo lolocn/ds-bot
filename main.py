@@ -13,8 +13,8 @@ random.seed(time.time())
 '''
 训练参数设置
 '''
-tf.app.flags.DEFINE_boolean("is_train", False, "Set to False to inference.")
-tf.app.flags.DEFINE_boolean("is_test", True, "Set to False to inference.")
+tf.app.flags.DEFINE_boolean("is_train", False, "Set to True to train.")
+tf.app.flags.DEFINE_boolean("is_test", True, "Set to True to inference test.")
 tf.app.flags.DEFINE_integer("symbols", 30000, "vocabulary size.")
 tf.app.flags.DEFINE_integer("num_entities", 21471, "entitiy vocabulary size.")
 tf.app.flags.DEFINE_integer("num_relations", 44, "relation size.")
@@ -26,7 +26,7 @@ tf.app.flags.DEFINE_integer("batch_size", 100, "Batch size to use during trainin
 tf.app.flags.DEFINE_string("data_dir", "./data", "Data directory")
 tf.app.flags.DEFINE_string("train_dir", "./train", "Training directory.")
 tf.app.flags.DEFINE_integer("per_checkpoint", 1000,"How many steps to do per checkpoint.")
-tf.app.flags.DEFINE_integer("inference_version", 8000,"The version for inferencing.")
+tf.app.flags.DEFINE_integer("inference_version", 0,"The version for inferencing.")
 tf.app.flags.DEFINE_boolean("log_parameters", True, "Set to True to show the parameters")
 tf.app.flags.DEFINE_string("inference_path", "test", "Set filename of inference")
 
@@ -155,8 +155,10 @@ def gen_batched_data(data):
     entities, triples, matches, post_triples, response_triples = [], [], [], [], []
     match_entities, all_entities = [], []
     match_triples, all_triples = [], []
+    # Not A Factor 用于对应停用词
     NAF = ['_NAF_H', '_NAF_R', '_NAF_T']
 
+    # Padding补全句子长度
     def padding(sent, l):
         return sent + ['_EOS'] + ['_PAD'] * (l-len(sent)-1)
 
@@ -434,7 +436,7 @@ with tf.Session(config=config) as sess:
             model.saver_epoch.save(sess, '%s/epoch/checkpoint' %
                                    FLAGS.train_dir, global_step=model.global_step)
     elif FLAGS.is_test:
-        # 模型测试模式  
+        # 模型自动测试模式  
         model = Model(
             FLAGS.symbols,
             FLAGS.embed_units,

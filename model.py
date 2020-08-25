@@ -146,14 +146,20 @@ class Model(object):
 
         # 知识融合层的静态注意力
         with tf.variable_scope('graph_attention'):
+            # 拼接head tail
             head_tail = tf.concat([head, tail], axis=3)
+            # head tail合成一个向量
             head_tail_transformed = tf.layers.dense(
                 head_tail, num_trans_units, activation=tf.tanh, name='head_tail_transform')
+            # relation 向量
             relation_transformed = tf.layers.dense(
                 relation, num_trans_units, name='relation_transform')
+            # relation 和 head_tail 计算注意力权重
             e_weight = tf.reduce_sum(
                 relation_transformed * head_tail_transformed, axis=3)
+            # 将注意力权重归一化
             alpha_weight = tf.nn.softmax(e_weight)
+            # 将权重和head_tail进行加权求和
             graph_embed = tf.reduce_sum(tf.expand_dims(
                 alpha_weight, 3) * head_tail, axis=2)
 
@@ -193,7 +199,7 @@ class Model(object):
                                                                                                            num_symbols, num_samples)
         # 解码器
         with tf.variable_scope('decoder'):
-            # get attention function
+            # 获取 attention 函数
             attention_keys_init, attention_values_init, attention_score_fn_init, attention_construct_fn_init \
                 = prepare_attention(encoder_output, 'bahdanau', num_units, imem=(graph_embed, triples_embedding), output_alignments=output_alignments and mem_use)  # 'luong', num_units)
 
@@ -214,7 +220,7 @@ class Model(object):
                                                   self.responses_target, self.decoder_mask)
 
         with tf.variable_scope('decoder', reuse=True):
-            # get attention function
+            # 获取 attention 函数
             attention_keys, attention_values, attention_score_fn, attention_construct_fn \
                 = prepare_attention(encoder_output, 'bahdanau', num_units, reuse=True, imem=(graph_embed, triples_embedding), output_alignments=output_alignments and mem_use)  # 'luong', num_units)
             decoder_fn_inference = attention_decoder_fn_inference(
