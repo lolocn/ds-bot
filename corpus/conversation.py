@@ -16,7 +16,7 @@ def get_message_by_id(messages, references, id):
 
 def clean_text(text):
     doc = nlp(text)
-    lemma = [l.lemma_ for l in doc]
+    lemma = [token.orth_.lower() for token in doc]
     return lemma
 
 conversations = []
