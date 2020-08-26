@@ -73,6 +73,9 @@ csk_entities = resource_data['csk_entities']
 raw_vocab = resource_data['vocab_dict']
 kb_dict = resource_data['dict_csk']
 
+'''
+用户输入数据整理，使匹配模型的输入格式
+'''
 def gen_batched_data(data):
     encoder_len = max([len(item['post']) for item in data])+1
     decoder_len = max([len(item['response']) for item in data])+1
