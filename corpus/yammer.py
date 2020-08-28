@@ -7,7 +7,7 @@ import json
 
 # auth_url = authenticator.authorization_url(redirect_uri=redirect_uri)
 # access_token = authenticator.fetch_access_token(authenticator)
-# access_data = authenticator.fetch_access_data('256-xuFOTPDvsQI0s0JqehOLSw')
+# access_data = authenticator.fetch_access_data('{access token of yammer}')
 '''
 使用yammer的SDK yampy抓取原始语料保存到文件
 使用python2
