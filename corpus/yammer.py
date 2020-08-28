@@ -1,8 +1,8 @@
 import yampy
 import json
 
-# authenticator = yampy.Authenticator(client_id='ePFomlHGwySNVOXzrc3A',
-#                                     client_secret='j4MCTTvGRQkxQFzkjGvudLp81xEITkIjvv4pub2QY0')
+# authenticator = yampy.Authenticator(client_id='',
+#                                     client_secret='')
 # redirect_uri = "http://localhost:8081"
 
 # auth_url = authenticator.authorization_url(redirect_uri=redirect_uri)
